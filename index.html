@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card GN</title>
+    <style>
+        body{
+            background-color: rgb(36,36,36);
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container{
+            background-color: #820ad1;
+            padding: 1em;
+            border-radius: 10px;
+            width: 15em;
+            height: 25em;
+            box-shadow: 5px 8px 8px #000;
+        }
+        img[alt=mastercard]{
+            width: 30%;
+        }
+        img[alt=chip]
+        {
+            width: 40%;
+            transform: rotate(90deg);
+        }
+        .footer img{
+            width: 35%;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .header{
+            height: 70%;
+        }
+        .box-img{
+            display: flex;
+            align-items: flex-start;
+        }
+        .footer{
+            height: 30%;
+        }
+        .footer p{
+            margin-left: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gustavo Neitzke</h1>
+    <br>
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <div class="box-img">
+                    <img src="mastercard_logo.png" alt="mastercard">
+                    <img src="chip.png" alt="chip">
+                </div>
+            </div>
+            <div class="footer">
+                <p>Gustavo Neitzke</p>
+                <img src="nubank_logo.png" alt="nubank">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const card = document.querySelector('.container');
+
+    card.addEventListener("mousemove", cardEffect);
+    card.addEventListener("mouseleave", cardBack);
+    card.addEventListener("mouseenter", cardEnter);
+
+    function cardEffect(event)
+    {
+        const cardWidth = card.offsetWidth;
+        const cardHeight = card.offsetHeight;
+        const centerX = card.offsetLeft + cardWidth/2;
+        const centerY = card.offsetTop + cardHeight/2;
+        const positionX = event.clientX - centerX;
+        const positionY = event.clientY - centerY;
+        
+        const rotateX = ((+1)*25*positionY/(cardHeight/2)).toFixed(2);
+        const rotateY = ((-1)*25*positionX/(cardWidth/2)).toFixed(2);
+
+        console.log(rotateX,rotateY);
+
+        card.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    }
+
+    function cardBack(event)
+    {
+        card.style.transform = `perspective(500px) rotateX(0deg) rotateY(0deg)`;
+        cardTransition();
+    }
+
+    function cardTransition()
+    {
+        clearInterval(card.transitionId);
+        card.style.transition = 'transform 400ms';
+        card.transitionId = setTimeout(() => {
+            card.style.transition = '';
+        },400);
+    }
+
+    function cardEnter(event)
+    {
+        cardTransition();
+    }
+</script>
+</html>
