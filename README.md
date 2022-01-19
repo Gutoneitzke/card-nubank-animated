@@ -1,9 +1,9 @@
 # Cartão Nubank Animado 💳
 Aprenda como replicar e animar um cartão com HTML, CSS e JavaScript
 <br>
-Vídeo: https://youtu.be/numSyfOJGEs
+Vídeos: https://youtube.com/playlist?list=PLSHNk_yA5fNg2REUfvCir5CU-DRJLa0CI
 <br>
 # Card Nubank Animated 💳
 Learn how to replicate and animate a card with HTML, CSS and JavaScript
 <br>
-Video: https://youtu.be/numSyfOJGEs
+Videos: https://youtube.com/playlist?list=PLSHNk_yA5fNg2REUfvCir5CU-DRJLa0CI
